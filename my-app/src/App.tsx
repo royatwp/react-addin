@@ -2,7 +2,7 @@ import { Stack, Text, Link, FontWeights, IStackTokens, IStackStyles, ITextStyles
 import { IconButton } from '@fluentui/react/lib/Button';
 import './App.css';
 import './components/DetailsListBasicExample'
-import { DetailsListBasicExample } from './components/DetailsListBasicExample';
+import { DetailsListBasicExample, IListDetailsProps } from './components/DetailsListBasicExample';
 
 import cardetails from './cars.json'
 import { useEffect, useState } from 'react';
@@ -50,20 +50,14 @@ export const App = (props: IButtonExampleProps) => {
   return (  
     <Stack horizontalAlign="center" verticalAlign="center" verticalFill styles={stackStyles} tokens={stackTokens}>
       <Stack horizontal tokens={stackTokens}>
-          <DetailsListBasicExample
-            variables={[]}
-            title="Unselected variables">
-          </DetailsListBasicExample>
+          <DetailsListBasicExample title='Unselected variables' variables={[]}/>
           <Stack verticalAlign='center'>
             <IconButton iconProps={{ iconName: 'DoubleChevronRight',  }} title="Emoji" ariaLabel="Emoji" />
             <IconButton iconProps={{ iconName: 'ChevronRight' }} title="Emoji" ariaLabel="Emoji"/>
             <IconButton iconProps={{ iconName: 'ChevronLeft' }} title="Emoji" ariaLabel="Emoji"/>
             <IconButton iconProps={{ iconName: 'DoubleChevronLeft' }} title="Emoji" ariaLabel="Emoji"/>
           </Stack>
-          <DetailsListBasicExample 
-            variables={selectedVariables}
-            title="Selected variables">
-          </DetailsListBasicExample>
+          <DetailsListBasicExample title='Selected variables' variables={selectedVariables}/>
       </Stack>
     </Stack>
   );
