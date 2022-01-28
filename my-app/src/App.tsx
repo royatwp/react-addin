@@ -39,7 +39,7 @@ const myStackStyles: Partial<IStackStyles> = {
 };
 
 
-export const App: React.FunctionComponent<IButtonExampleProps> = props  => {
+export function App(props: IButtonExampleProps) {
 
   const { disabled, checked } = props;
 
