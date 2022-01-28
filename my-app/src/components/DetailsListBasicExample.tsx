@@ -5,7 +5,6 @@ import { DetailsList, DetailsListLayoutMode, Selection, IColumn } from '@fluentu
 import { MarqueeSelection } from '@fluentui/react/lib/MarqueeSelection';
 import { mergeStyles } from '@fluentui/react/lib/Styling';
 import { Text } from '@fluentui/react/lib/Text';
-import cardetails from '../cars.json'
 import { isThisTypeNode } from 'typescript';
 
 const exampleChildClass = mergeStyles({
@@ -31,6 +30,7 @@ export interface IDetailsListBasicExampleState {
 
 export type IListDetailsProps = {
   title: string;
+  variables: IDetailsListBasicExampleItem[];
 }
 
 export class DetailsListBasicExample extends React.Component<IListDetailsProps, IDetailsListBasicExampleState> {
@@ -46,7 +46,7 @@ export class DetailsListBasicExample extends React.Component<IListDetailsProps, 
       onSelectionChanged: () => this.setState({ selectionDetails: this._getSelectionDetails() }),
     });
 
-    this._allItems = [...cardetails.variables];
+    this._allItems = [...this.props.variables];
 
     this._columns = [
       { key: 'column1', name: 'Variable', fieldName: 'variable', minWidth: 100, maxWidth: 200, isResizable: true },
@@ -54,7 +54,7 @@ export class DetailsListBasicExample extends React.Component<IListDetailsProps, 
     ];
 
     this.state = {
-      items: cardetails.variables,
+      items: props.variables,
       selectionDetails: this._getSelectionDetails(),
     };
   }
