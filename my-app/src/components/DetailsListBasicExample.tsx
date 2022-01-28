@@ -6,6 +6,7 @@ import { MarqueeSelection } from '@fluentui/react/lib/MarqueeSelection';
 import { mergeStyles } from '@fluentui/react/lib/Styling';
 import { Text } from '@fluentui/react/lib/Text';
 import cardetails from '../cars.json'
+import { isThisTypeNode } from 'typescript';
 
 const exampleChildClass = mergeStyles({
   display: 'block',
@@ -34,7 +35,7 @@ export type IListDetailsProps = {
 
 export class DetailsListBasicExample extends React.Component<IListDetailsProps, IDetailsListBasicExampleState> {
   private _selection: Selection;
-  // private _allItems: IDetailsListBasicExampleItem[];
+  private _allItems: IDetailsListBasicExampleItem[];
   private _columns: IColumn[];
 
   constructor(props: IListDetailsProps) {
@@ -45,15 +46,7 @@ export class DetailsListBasicExample extends React.Component<IListDetailsProps, 
       onSelectionChanged: () => this.setState({ selectionDetails: this._getSelectionDetails() }),
     });
 
-    // Populate with items for demos.
-    //this._allItems = [];
-    // for (let i = 0; i < 10; i++) {
-    //   this._allItems.push({
-    //     key: i,
-    //     name: 'Item ' + i,
-    //     value: i,
-    //   });
-    // }
+    this._allItems = [...cardetails.variables];
 
     this._columns = [
       { key: 'column1', name: 'Variable', fieldName: 'variable', minWidth: 100, maxWidth: 200, isResizable: true },
@@ -78,7 +71,7 @@ export class DetailsListBasicExample extends React.Component<IListDetailsProps, 
         <TextField
           className={exampleChildClass}
           label={title}
-          //onChange={this._onFilter}
+          onChange={this._onFilter}
           styles={textFieldStyles}
         />
         <Announced message={`Number of items after filter applied: ${items.length}.`} />
@@ -114,12 +107,11 @@ export class DetailsListBasicExample extends React.Component<IListDetailsProps, 
     return '';
   }
 
-  private _onFilter = (ev: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>, text: string): void => {
-    // this.setState({
-    //   items: text ? this._allItems.filter(i => i.name.toLowerCase().indexOf(text) > -1) : this._allItems,
-    // });
+  private _onFilter = (ev: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>, text: string | undefined): void => {
+    this.setState({
+      items: text ? this._allItems.filter(i => i.variable.toLowerCase().indexOf(text) > -1) : this._allItems,
+    });
   };
-
   private _onItemInvoked = (item: IDetailsListBasicExampleItem): void => {
     // alert(`Item invoked: ${item.name}`);
   };
