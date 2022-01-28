@@ -5,6 +5,8 @@ import { DefaultButton, PrimaryButton } from '@fluentui/react/lib/Button';
 
 
 import './App.css';
+import './components/DetailsListBasicExample'
+import { DetailsListBasicExample } from './components/DetailsListBasicExample';
 
 export interface IButtonExampleProps {
   // These are set based on the toggles shown above the examples (not needed in real code)
@@ -47,8 +49,14 @@ export const App: React.FunctionComponent<IButtonExampleProps> = props  => {
   }
 
   return (
+  
     <Stack horizontalAlign="center" verticalAlign="center" verticalFill styles={stackStyles} tokens={stackTokens}>
-      <Text>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam facilis et explicabo facere pariatur, quam dolorum accusantium quos commodi sequi amet nostrum culpa quibusdam saepe reiciendis rerum, fuga, sit ad molestiae excepturi sed sunt omnis. Debitis nihil modi fugit incidunt.</Text>
+
+      <Stack horizontal>
+          <DetailsListBasicExample></DetailsListBasicExample>
+      </Stack>
+
+      {/* <Text>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam facilis et explicabo facere pariatur, quam dolorum accusantium quos commodi sequi amet nostrum culpa quibusdam saepe reiciendis rerum, fuga, sit ad molestiae excepturi sed sunt omnis. Debitis nihil modi fugit incidunt.</Text>
       <Stack tokens={stackTokens} styles={myStackStyles} horizontal>
         <Label>I am a label</Label>
         <Label>I am another label</Label>
@@ -67,7 +75,7 @@ export const App: React.FunctionComponent<IButtonExampleProps> = props  => {
         <Link href="https://developer.microsoft.com/en-us/fluentui#/styles/web/icons">Icons</Link>
         <Link href="https://developer.microsoft.com/en-us/fluentui#/styles/web">Styles</Link>
         <Link href="https://aka.ms/themedesigner">Theme designer</Link>
-      </Stack>
+      </Stack> */}
     </Stack>
 
 
