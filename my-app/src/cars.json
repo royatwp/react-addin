@@ -1,27 +1,22 @@
 {
   "variables" : [
     { 
-      "key" : 0,
       "variable" : "make",
       "type": "Character"
     },
     { 
-      "key" : 1,
       "variable" : "model",
       "type": "Character"
     },
     { 
-      "key" : 2,
       "variable" : "mpg",
       "type": "Number"
     },
     { 
-      "key" : 3,
       "variable" : "weight",
       "type": "Numeric"
     },
     { 
-      "key" : 4,
       "variable" : "price",
       "type": "Numeric"
     }

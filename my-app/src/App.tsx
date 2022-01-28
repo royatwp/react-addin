@@ -2,10 +2,10 @@ import { Stack, Text, Link, FontWeights, IStackTokens, IStackStyles, ITextStyles
 import { IconButton } from '@fluentui/react/lib/Button';
 import './App.css';
 import './components/DetailsListBasicExample'
-import { DetailsListBasicExample, IListDetailsProps } from './components/DetailsListBasicExample';
+import { DetailsListBasicExample, IListDetailsProps, IDetailsListBasicExampleItem } from './components/DetailsListBasicExample';
 
 import cardetails from './cars.json'
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 export interface IButtonExampleProps {
   // These are set based on the toggles shown above the examples (not needed in real code)
@@ -40,22 +40,31 @@ const myStackStyles: Partial<IStackStyles> = {
 
 export const App = (props: IButtonExampleProps) => {
 
+  const allVariables: IDetailsListBasicExampleItem[] = cardetails.variables;
   const [ selectedVariables, setSelectedVariables] = useState(cardetails.variables);
-
-  // useEffect( () => {
-  // });
+  const [ unselectedVariables, setUnselectedVariables] = useState([] as IDetailsListBasicExampleItem[]);
 
   initializeIcons();
+
+  const onDeselectAll = () => {
+    setSelectedVariables([] as IDetailsListBasicExampleItem[]);
+    setUnselectedVariables(allVariables);
+    console.log('Selected', selectedVariables);
+    console.log('Unselected', unselectedVariables);
+  }
 
   return (  
     <Stack horizontalAlign="center" verticalAlign="center" verticalFill styles={stackStyles} tokens={stackTokens}>
       <Stack horizontal tokens={stackTokens}>
-          <DetailsListBasicExample title='Unselected variables' variables={[]}/>
+          <DetailsListBasicExample title='Unselected variables' variables={unselectedVariables}/>
           <Stack verticalAlign='center'>
-            <IconButton iconProps={{ iconName: 'DoubleChevronRight',  }} title="Emoji" ariaLabel="Emoji" />
-            <IconButton iconProps={{ iconName: 'ChevronRight' }} title="Emoji" ariaLabel="Emoji"/>
-            <IconButton iconProps={{ iconName: 'ChevronLeft' }} title="Emoji" ariaLabel="Emoji"/>
-            <IconButton iconProps={{ iconName: 'DoubleChevronLeft' }} title="Emoji" ariaLabel="Emoji"/>
+            <IconButton iconProps={{ iconName: 'DoubleChevronRight' }} 
+              title="Emoji"/>
+            <IconButton iconProps={{ iconName: 'ChevronRight' }} title="Emoji"/>
+            <IconButton iconProps={{ iconName: 'ChevronLeft' }} title="Emoji"/>
+            <IconButton iconProps={{ iconName: 'DoubleChevronLeft' }}
+              onClick={onDeselectAll}
+              title="Emoji"/>
           </Stack>
           <DetailsListBasicExample title='Selected variables' variables={selectedVariables}/>
       </Stack>

@@ -50,11 +50,16 @@ export const DetailsListBasicExample = ({title, variables}: IListDetailsProps) =
           onChange={onFilter}
           styles={textFieldStyles}
         />
+        <div>
+          {filteredItems && filteredItems.map(item => (
+            <span key={item.variable}>{item.variable} </span>
+          ))}
+        </div>
         <MarqueeSelection selection={selection}>
           <DetailsList
             items={filteredItems}
             columns={columns}
-            setKey="set"
+            setKey="variable"
             layoutMode={DetailsListLayoutMode.justified}
             selection={selection}
             selectionPreservedOnEmptyClick={true}
