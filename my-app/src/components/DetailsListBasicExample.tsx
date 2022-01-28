@@ -113,6 +113,6 @@ export class DetailsListBasicExample extends React.Component<IListDetailsProps, 
     });
   };
   private _onItemInvoked = (item: IDetailsListBasicExampleItem): void => {
-    // alert(`Item invoked: ${item.name}`);
+    alert(`Item invoked: ${item.variable}`);
   };
 }
