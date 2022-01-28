@@ -1,7 +1,7 @@
 import React, { SyntheticEvent } from 'react';
 
-import { Stack, Text, Link, FontWeights, IStackTokens, IStackStyles, ITextStyles, Label } from '@fluentui/react';
-import { DefaultButton, PrimaryButton } from '@fluentui/react/lib/Button';
+import { Stack, Text, Link, FontWeights, IStackTokens, IStackStyles, ITextStyles, Label, initializeIcons } from '@fluentui/react';
+import { IconButton } from '@fluentui/react/lib/Button';
 
 
 import './App.css';
@@ -39,7 +39,7 @@ const myStackStyles: Partial<IStackStyles> = {
 };
 
 
-export function App(props: IButtonExampleProps) {
+export const App = (props: IButtonExampleProps) => {
 
   const { disabled, checked } = props;
 
@@ -49,12 +49,20 @@ export function App(props: IButtonExampleProps) {
     
   }
 
+  initializeIcons();
+
   return (
   
     <Stack horizontalAlign="center" verticalAlign="center" verticalFill styles={stackStyles} tokens={stackTokens}>
 
       <Stack horizontal tokens={stackTokens}>
           <DetailsListBasicExample title="Unselected variables"></DetailsListBasicExample>
+          <Stack verticalAlign='center'>
+            <IconButton iconProps={{ iconName: 'DoubleChevronRight',  }} title="Emoji" ariaLabel="Emoji" />
+            <IconButton iconProps={{ iconName: 'ChevronRight' }} title="Emoji" ariaLabel="Emoji"/>
+            <IconButton iconProps={{ iconName: 'ChevronLeft' }} title="Emoji" ariaLabel="Emoji"/>
+            <IconButton iconProps={{ iconName: 'DoubleChevronLeft' }} title="Emoji" ariaLabel="Emoji"/>
+          </Stack>
           <DetailsListBasicExample title="Selected variables"></DetailsListBasicExample>
       </Stack>
 
