@@ -16,7 +16,7 @@ export interface IButtonExampleProps {
 
 const boldStyle: Partial<ITextStyles> = { root: { fontWeight: FontWeights.semibold } };
 const stackTokens: IStackTokens = { 
-  childrenGap: 15,
+  childrenGap: 40,
  };
 
 const stackStyles: Partial<IStackStyles> = {
@@ -52,7 +52,8 @@ export const App: React.FunctionComponent<IButtonExampleProps> = props  => {
   
     <Stack horizontalAlign="center" verticalAlign="center" verticalFill styles={stackStyles} tokens={stackTokens}>
 
-      <Stack horizontal>
+      <Stack horizontal tokens={stackTokens}>
+          <DetailsListBasicExample></DetailsListBasicExample>
           <DetailsListBasicExample></DetailsListBasicExample>
       </Stack>
 
