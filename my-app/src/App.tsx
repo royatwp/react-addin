@@ -43,27 +43,35 @@ export const App = (props: IButtonExampleProps) => {
   const allVariables: IDetailsListBasicExampleItem[] = cardetails.variables;
   const [ selectedVariables, setSelectedVariables] = useState(cardetails.variables);
   const [ unselectedVariables, setUnselectedVariables] = useState([] as IDetailsListBasicExampleItem[]);
+  const [ mystring, setMyString ] = useState("Hello Roy.");
 
   initializeIcons();
 
   const onDeselectAll = () => {
-    setSelectedVariables([] as IDetailsListBasicExampleItem[]);
-    setUnselectedVariables(allVariables);
+    setSelectedVariables((prevVars) => {
+      return []
+    });
+    setUnselectedVariables(() => {
+      return [...allVariables]
+    });
     console.log('Selected', selectedVariables);
     console.log('Unselected', unselectedVariables);
   }
 
   return (  
     <Stack horizontalAlign="center" verticalAlign="center" verticalFill styles={stackStyles} tokens={stackTokens}>
+      <p>The string is {mystring}</p>
       <Stack horizontal tokens={stackTokens}>
           <DetailsListBasicExample title='Unselected variables' variables={unselectedVariables}/>
           <Stack verticalAlign='center'>
             <IconButton iconProps={{ iconName: 'DoubleChevronRight' }} 
               title="Emoji"/>
             <IconButton iconProps={{ iconName: 'ChevronRight' }} title="Emoji"/>
-            <IconButton iconProps={{ iconName: 'ChevronLeft' }} title="Emoji"/>
+            <IconButton iconProps={{ iconName: 'ChevronLeft' }}
+              onClick={() => setMyString('Yo yo yo')}
+              title="Emoji"/>
             <IconButton iconProps={{ iconName: 'DoubleChevronLeft' }}
-              onClick={onDeselectAll}
+              onClick={() => onDeselectAll()}
               title="Emoji"/>
           </Stack>
           <DetailsListBasicExample title='Selected variables' variables={selectedVariables}/>
