@@ -46,6 +46,7 @@ export const App: React.FunctionComponent<IButtonExampleProps> = props  => {
   const clickHandler = (e: any) => {
     console.log(e)
     alert('Clicked a thing')
+    
   }
 
   return (
@@ -53,8 +54,8 @@ export const App: React.FunctionComponent<IButtonExampleProps> = props  => {
     <Stack horizontalAlign="center" verticalAlign="center" verticalFill styles={stackStyles} tokens={stackTokens}>
 
       <Stack horizontal tokens={stackTokens}>
-          <DetailsListBasicExample></DetailsListBasicExample>
-          <DetailsListBasicExample></DetailsListBasicExample>
+          <DetailsListBasicExample title="Unselected variables"></DetailsListBasicExample>
+          <DetailsListBasicExample title="Selected variables"></DetailsListBasicExample>
       </Stack>
 
       {/* <Text>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam facilis et explicabo facere pariatur, quam dolorum accusantium quos commodi sequi amet nostrum culpa quibusdam saepe reiciendis rerum, fuga, sit ad molestiae excepturi sed sunt omnis. Debitis nihil modi fugit incidunt.</Text>

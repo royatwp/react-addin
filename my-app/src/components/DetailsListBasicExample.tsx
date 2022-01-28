@@ -28,12 +28,17 @@ export interface IDetailsListBasicExampleState {
   selectionDetails: string;
 }
 
-export class DetailsListBasicExample extends React.Component<{}, IDetailsListBasicExampleState> {
+export type IListDetailsProps = {
+  title: string;
+}
+
+export class DetailsListBasicExample extends React.Component<IListDetailsProps, IDetailsListBasicExampleState> {
   private _selection: Selection;
   // private _allItems: IDetailsListBasicExampleItem[];
   private _columns: IColumn[];
 
-  constructor(props: {}) {
+  constructor(props: IListDetailsProps) {
+
     super(props);
 
     this._selection = new Selection({
@@ -64,13 +69,15 @@ export class DetailsListBasicExample extends React.Component<{}, IDetailsListBas
   public render(): JSX.Element {
     const { items, selectionDetails } = this.state;
 
+    const title = this.props.title;
+
     return (
       <div>
         {/* <div className={exampleChildClass}>{selectionDetails}</div>
         <Announced message={selectionDetails} /> */}
         <TextField
           className={exampleChildClass}
-          label="Unselected Columns"
+          label={title}
           //onChange={this._onFilter}
           styles={textFieldStyles}
         />
